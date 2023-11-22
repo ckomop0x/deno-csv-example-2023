@@ -1,5 +1,8 @@
+import { join } from "./deps.ts";
+
 async function readFile() {
-    const data = await Deno.readTextFile("hello.txt");
+    const path = join("data", "hello.txt");
+    const data = await Deno.readTextFile(path);
     console.log(data);
 }
 
@@ -9,4 +12,5 @@ async function readDir() {
     }
 }
 
+void readFile();
 void readDir();
