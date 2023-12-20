@@ -28,15 +28,15 @@ async function loadPlanetsData() {
           && stellarRadius > 0.99 && stellarRadius < 1.01;
     });
 
-    return result;
+    return planets.map((planet) => {
+        return {
+            name: planet["kepler_name"],
+            numberOfMoons: Number(planet["koi_count"]),
+            nameOfStar: planet["kepler_name"],
+        }
+    });
 }
 
 const newEarths = await loadPlanetsData();
-
-// async function readDir() {
-//     for await (const dirEntry of Deno.readDir(Deno.cwd())) {
-//         console.log(dirEntry.name);
-//     }
-// }
 
 console.log(`${newEarths.length} habitable planets found!`)
